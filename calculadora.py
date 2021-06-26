@@ -83,7 +83,7 @@ def selectDataDate(start_date, end_date):
 # calculo de numeros de visualisações necessarias para 01 click
 VIEW = 12 / 100 
 # calculo de numeros de cliks necessarios para 01 compartilhamento
-CLICK = 3 / 20 
+SHARE = 3 / 20 
 # 30 pessoas visualizam o anúncio original (não compartilhado) a cada R$ 1,00 investido.
 VIEW_investment = 30  
 # o mesmo anúncio é compartilhado no máximo 4 vezes em sequência
@@ -91,7 +91,7 @@ MAX_share = 4
 
 def countView(data_input):
     quantity_clicks = data_input * VIEW
-    quantity_share = quantity_clicks * CLICK
+    quantity_share = quantity_clicks * SHARE
     quantity_view_share = quantity_share * 40
     return quantity_view_share
 
@@ -108,6 +108,14 @@ def maxView(data_input, max_share=MAX_share):
             print('Error!')
             break
     return amount_view
+
+def countClick(data_input):
+    quantity_click = data_input * VIEW
+    return quantity_click
+
+def contador_de_share(data_input):
+    quantity_share = countClick(data_input) * SHARE
+    return quantity_share
 
 
 def printOutMenu():
