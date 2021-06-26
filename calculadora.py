@@ -37,7 +37,15 @@ def insertClient(value_cpf, value_name):
     cursor = conn.cursor()
     cursor.execute("INSERT INTO clientes (cpf, nome) VALUES (" + value_cpf + ",'" + value_name + "')")
     conn.commit()
-    
+
+def insertDataBudget( cpf, ad_name, start_date, end_date, max_share, max_clicks, max_view, daily_investment, total_investent):
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO orcamentos (cpf, ad_name, start_date, end_date, max_share, max_clicks, max_view, daily_investment,"
+        "total_investent) VALUES ('" + cpf + "','" + ad_name + "','" + start_date + "','" + end_date + "','" + str(
+        max_share) + "," + str(max_clicks) + ", " + str(max_view) + ", " + str(daily_investment) + ", " + str(total_investent) + ")")
+    conn.commit()
+
 def printOutMenu():
     print ("(1) Pesquisar por um orçamento")
     print ("(2) Fazer um orçamento")
@@ -51,6 +59,7 @@ def main():
 
 
 #main()
-insertClient("01111111111", "carol")
+#insertClient("01111111111", "carol")
 #configure_database()
+
 
