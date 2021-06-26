@@ -1,5 +1,6 @@
 import sqlite3 
 import os
+import datetime as date 
 
 conn = sqlite3.connect(':memory:')
 conn = sqlite3.connect('anuncios')
@@ -113,10 +114,19 @@ def countClick(data_input):
     quantity_click = data_input * VIEW
     return quantity_click
 
-def contador_de_share(data_input):
+def countShare(data_input):
     quantity_share = countClick(data_input) * SHARE
     return quantity_share
 
+def countDays(start_date, end_date):
+    date_start = date.datetime.strptime(start_date, '%d/%m/%Y')
+    date_end = date.datetime.strptime(end_date, '%d/%m/%Y')
+    
+    if date_start == date_end:
+        quantity_days = 1
+    else:
+        quantity_days = 1 + abs((date_end - date_start).days)
+    return quantity_days
 
 def printOutMenu():
     print ("(1) Pesquisar por um orçamento")
