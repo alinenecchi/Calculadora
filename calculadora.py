@@ -28,5 +28,23 @@ def configure_database():
            NOT NULL, invest_total FLOAT(20) NOT NULL, cpf BIGINT(11) NOT NULL, max_view INT(20) NOT NULL, max_clic 
            INT(20) NOT NULL, max_share INT(20) NOT NULL, FOREIGN KEY(cpf) REFERENCES clientes(cpf))""")
         conn.commit()
+        main()
     except sqlite3.OperationalError:
+        main()
+
+
+
+def printOutMenu():
+    print ("(1) Pesquisar por um orçamento")
+    print ("(2) Fazer um orçamento")
+    print ("(0) Encerrar programa")
+    
+def main():
+    print ("Seja bem vindo! Dgite a opção desejada.")
+    printOutMenu()
+    #decisao1 = int(input('Resposta: '))
+    #decisao_inicial(decisao1)
+
+
+main()
 
