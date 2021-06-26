@@ -33,7 +33,11 @@ def configure_database():
         main()
 
 
-
+def insertClient(value_cpf, value_name):
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO clientes (cpf, nome) VALUES (" + value_cpf + ",'" + value_name + "')")
+    conn.commit()
+    
 def printOutMenu():
     print ("(1) Pesquisar por um orçamento")
     print ("(2) Fazer um orçamento")
@@ -46,5 +50,7 @@ def main():
     #decisao_inicial(decisao1)
 
 
-main()
+#main()
+insertClient("01111111111", "carol")
+#configure_database()
 
