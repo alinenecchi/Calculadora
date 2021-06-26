@@ -41,10 +41,31 @@ def insertClient(value_cpf, value_name):
 def insertDataBudget( cpf, ad_name, start_date, end_date, max_share, max_clicks, max_view, daily_investment, total_investent):
     cursor = conn.cursor()
     cursor.execute(
-        "INSERT INTO orcamentos (cpf, ad_name, start_date, end_date, max_share, max_clicks, max_view, daily_investment,"
+        "INSERT INTO orcamentos (cpf, ad_name, start_date, end_date, max_share, max_clicks, max_view, daily_investment, "
         "total_investent) VALUES ('" + cpf + "','" + ad_name + "','" + start_date + "','" + end_date + "','" + str(
         max_share) + "," + str(max_clicks) + ", " + str(max_view) + ", " + str(daily_investment) + ", " + str(total_investent) + ")")
     conn.commit()
+
+def selectDataCpf(cpf):
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT id, ad_name, start_date, end_date, max_share, max_clicks, max_view, daily_investment, total_investent "
+        "FROM orcamentos where orcamentos.cpf = '" + cpf + "' ")
+    linhas = cursor.fetchall()
+    print('\n')
+    print(f"O(s) orçamento(s) cadastrado(s) nesse CPF é(são):")
+    for linha in linhas:
+        print('\n\n')
+        print(f"Nome do anuncio: {linha[1]}.")
+        print(f'ID do anúncio: {linha[0]}.')
+        print(f'Data de início do anúncio: {linha[2]} e a data de fim do anúncio é {linha[3]}.')
+        print(f'O investimento por dia do anúncio foi de: R${linha[4]:.2f}, e o investimento total foi de: '
+              f'R${linha[5]:.2f}!')
+        print(f'O máximo de visualizações no final do período é de {linha[7]:.0f}, o máximo de cliques é: '
+              f'{linha[8]:.0f}'
+              f'e o máximo de compartilhamentos é: {linha[9]:.0f}.')
+    print('\n Fim dos orçamentos! ')
+    print('\n')
 
 def printOutMenu():
     print ("(1) Pesquisar por um orçamento")
