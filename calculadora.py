@@ -56,34 +56,35 @@ def selectDataCpf(cpf):
             print(f"Nome do anuncio: {line[1]}.")
             print(f'ID do anúncio: {line[0]}.')
             print(f'Data de início do anúncio: {line[2]} e a data de fim do anúncio é {line[3]}.')
-            print(f'O investimento por dia do anúncio foi de: R${line[4]:.2f}, e o investimento total foi de: '
-                f'R${line[5]:.2f}!')
-            print(f'O máximo de visualizações no final do período é de {line[7]:.0f}, o máximo de cliques é: '
-                f'{line[8]:.0f}'
-                f'e o máximo de compartilhamentos é: {line[9]:.0f}.')
+            print(f'O investimento por dia do anúncio foi de: R${line[7]:.2f}, e o investimento total foi de: '
+                f'R${line[8]:.2f}!')
+            print(f'O máximo de visualizações no final do período é de {line[6]:.0f}, o máximo de cliques é: '
+                f'{line[5]:.0f}'
+                f' e o máximo de compartilhamentos é: {line[4]:.0f}.')
     print('\n Fim dos orçamentos! ')
     print('\n')
 #=======Função para pesquisa por data==============
 def selectDataDate(start_date, end_date):
     cursor = conn.cursor()
-    cursor.execute("SELECT clientes.name, orcamentos.ID,orcamentos.cpf, orcamentos.ad.name, orcamentos.start_date, "
+    cursor.execute("SELECT clientes.name, orcamentos.ID,orcamentos.cpf, orcamentos.ad_name, orcamentos.start_date, "
                    "orcamentos.end_date, orcamentos.daily_investment, orcamentos.total_investent, "
                    "orcamentos.max_share, orcamentos.max_clicks, orcamentos.max_view FROM orcamentos INNER JOIN "
                    "clientes ON clientes.cpf = orcamentos.cpf WHERE orcamentos.start_date = '" + start_date + "' "
                    "AND orcamentos.end_date = '" + end_date + "'")
     lines = cursor.fetchall()
+    print(lines)
     print(f"\n O(s) orçamento(s) cadastrado(s)de {start_date} até {end_date} são:")
     for line in lines:
         print('\n')
         print(f'Nome do Cliente: {line[0]}.')
-        print(f"Nome do anuncio: {line[2]}.")
-        print(f'ID do anúncio: {line[1]}.')
-        print(f'Data de início do anúncio: {line[3]} e a data de fim do anúncio é {line[4]}.')
-        print(f'Investimento por dia do anúncio foi de: R${line[5]:.2f}.')
-        print(f'Investimento total: R${line[6]:.2f} .')
-        print(f'Máximo de visualizações: {line[8]:.0f}.')
+        print(f"Nome do anuncio: {line[1]}.")
+        print(f'ID do anúncio: {line[3]}.')
+        print(f'Data de início do anúncio: {line[4]} e a data de fim do anúncio é {line[5]}.')
+        print(f'Investimento por dia do anúncio foi de: R${line[6]:.2f}.')
+        print(f'Investimento total: R${line[7]:.2f} .')
+        print(f'Máximo de visualizações: {line[10]:.0f}.')
         print(f'Máximo de cliques: {line[9]:.0f}.')
-        print(f'Máximo de compartilhamentos: {line[10]:.0f}.')
+        print(f'Máximo de compartilhamentos: {line[8]:.0f}.')
     print('\n Fim dos orçamentos!\n')
 
 def countView(data_input):
@@ -142,7 +143,7 @@ def searchBudget(option):
         os.system("cls")
         date_start = str(input('Digite a data de início da publicação [dd/mn/YYYY]: '))
         date_end = str(input('Digite a data de término da publicação [dd/mn/YYYY]: '))
-        select_dados_data(date_start, date_end)
+        selectDataDate(date_start, date_end)
         main()
 
     if option == 0:
