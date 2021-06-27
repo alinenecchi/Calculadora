@@ -44,14 +44,14 @@ def selectDataCpf(cpf):
     cursor.execute(
         "SELECT id, ad_name, start_date, end_date, max_share, max_clicks, max_view, daily_investment, total_investent "
         "FROM orcamentos where orcamentos.cpf = '" + cpf + "' ")
-    linhas = cursor.fetchall()
-    if not linhas: 
+    lines = cursor.fetchall()
+    if not lines: 
         print ("Cliente ainda não cadastrado.")
         configure_database()   
     else: 
         print('\n')
         print(f"O(s) orçamento(s) cadastrado(s) nesse CPF é(são):")
-        for linha in linhas:
+        for linha in lines:
             print('\n\n')
             print(f"Nome do anuncio: {linha[1]}.")
             print(f'ID do anúncio: {linha[0]}.')
@@ -71,9 +71,9 @@ def selectDataDate(start_date, end_date):
                    "orcamentos.max_share, orcamentos.max_clicks, orcamentos.max_view FROM orcamentos INNER JOIN "
                    "clientes ON clientes.cpf = orcamentos.cpf WHERE orcamentos.start_date = '" + start_date + "' "
                    "AND orcamentos.end_date = '" + end_date + "'")
-    linhas = cursor.fetchall()
+    lines = cursor.fetchall()
     print(f"\n O(s) orçamento(s) cadastrado(s)de {start_date} até {end_date} são:")
-    for linha in linhas:
+    for linha in lines:
         print('\n')
         print(f'Nome do Cliente: {linha[0]}.')
         print(f"Nome do anuncio: {linha[2]}.")
