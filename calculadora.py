@@ -51,16 +51,16 @@ def selectDataCpf(cpf):
     else: 
         print('\n')
         print(f"O(s) orçamento(s) cadastrado(s) nesse CPF é(são):")
-        for linha in lines:
+        for line in lines:
             print('\n\n')
-            print(f"Nome do anuncio: {linha[1]}.")
-            print(f'ID do anúncio: {linha[0]}.')
-            print(f'Data de início do anúncio: {linha[2]} e a data de fim do anúncio é {linha[3]}.')
-            print(f'O investimento por dia do anúncio foi de: R${linha[4]:.2f}, e o investimento total foi de: '
-                f'R${linha[5]:.2f}!')
-            print(f'O máximo de visualizações no final do período é de {linha[7]:.0f}, o máximo de cliques é: '
-                f'{linha[8]:.0f}'
-                f'e o máximo de compartilhamentos é: {linha[9]:.0f}.')
+            print(f"Nome do anuncio: {line[1]}.")
+            print(f'ID do anúncio: {line[0]}.')
+            print(f'Data de início do anúncio: {line[2]} e a data de fim do anúncio é {line[3]}.')
+            print(f'O investimento por dia do anúncio foi de: R${line[4]:.2f}, e o investimento total foi de: '
+                f'R${line[5]:.2f}!')
+            print(f'O máximo de visualizações no final do período é de {line[7]:.0f}, o máximo de cliques é: '
+                f'{line[8]:.0f}'
+                f'e o máximo de compartilhamentos é: {line[9]:.0f}.')
     print('\n Fim dos orçamentos! ')
     print('\n')
 #=======Função para pesquisa por data==============
@@ -73,17 +73,17 @@ def selectDataDate(start_date, end_date):
                    "AND orcamentos.end_date = '" + end_date + "'")
     lines = cursor.fetchall()
     print(f"\n O(s) orçamento(s) cadastrado(s)de {start_date} até {end_date} são:")
-    for linha in lines:
+    for line in lines:
         print('\n')
-        print(f'Nome do Cliente: {linha[0]}.')
-        print(f"Nome do anuncio: {linha[2]}.")
-        print(f'ID do anúncio: {linha[1]}.')
-        print(f'Data de início do anúncio: {linha[3]} e a data de fim do anúncio é {linha[4]}.')
-        print(f'Investimento por dia do anúncio foi de: R${linha[5]:.2f}.')
-        print(f'Investimento total: R${linha[6]:.2f} .')
-        print(f'Máximo de visualizações: {linha[8]:.0f}.')
-        print(f'Máximo de cliques: {linha[9]:.0f}.')
-        print(f'Máximo de compartilhamentos: {linha[10]:.0f}.')
+        print(f'Nome do Cliente: {line[0]}.')
+        print(f"Nome do anuncio: {line[2]}.")
+        print(f'ID do anúncio: {line[1]}.')
+        print(f'Data de início do anúncio: {line[3]} e a data de fim do anúncio é {line[4]}.')
+        print(f'Investimento por dia do anúncio foi de: R${line[5]:.2f}.')
+        print(f'Investimento total: R${line[6]:.2f} .')
+        print(f'Máximo de visualizações: {line[8]:.0f}.')
+        print(f'Máximo de cliques: {line[9]:.0f}.')
+        print(f'Máximo de compartilhamentos: {line[10]:.0f}.')
     print('\n Fim dos orçamentos!\n')
 
 def countView(data_input):
